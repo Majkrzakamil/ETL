@@ -6,10 +6,9 @@
 </head>
 <body>
     <ul class="offers">
-        <% for(var i=0; i<offers.length; i++) {%>
+        <% for(var i=0; i<offers.titles.length; i++) {%>
             <li class="offer">
-            <span><%= offers[i].name %></span>
-            <span><%= offers[i].offer %></span>
+            <span><%= offers.titles[i] %></span>
             </li>
         <% } %>
     </ul>
@@ -19,6 +18,7 @@
         <input type="text" placeholder="offer" name="offer">
         <button type="submit">Submit</button>
     </form>
+    <button id="etl">ETL</button>
     <button id="delete">Delete DB</button>
 
     <script src="main.js"></script>
