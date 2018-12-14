@@ -23,7 +23,7 @@ MongoClient.connect('mongodb://ETL:admin123@ds151012.mlab.com:51012/etl', (err, 
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
     db.collection('offers').find().toArray((err, result) => {

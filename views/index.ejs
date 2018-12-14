@@ -5,25 +5,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        body {
+            
+            background: #36D1DC;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+
+        .container {    
+            padding: 2em 2em 2em 2em;
+            margin: 2em auto 2em auto;
+            background: #fafafa;
+            border-radius: 5px;
+            -webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.3);
+            -moz-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.3);
+            box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.3);
+        }
+
+        .control {
+            text-align: center;
+        }
+
+        button {
+            width: 130px;
+            height: 50px;
+            border: none;
+            color: #36D1DC;
+            border-radius: 5px;
+            background: #fafafa;
+            cursor: pointer;
+            margin: 0 2em 2em 0;
+            text-transform: uppercase;
+        }
+
+        button:disabled {
+            color: #aeaeae;
+        }
+
+        #status {
+            text-align: center;
+        }
+
+        .titles, .addresses, .prices {
+            height: 60px;        
+        }
+    </style>
 </head>
 <body>
 
     <div class="container">
         <div class="row">
-            <% offers %>
+            <div class="control col-sm-12">
+                <button id="etl">ETL</button>
+                <button id="extract">Extract</button>
+                <button id="transform">Transform</button>
+                <button id="load">Load</button>
+                <button id="delete">Delete DB</button>
+            </div>
+        </div>
+        <div class="row">
             <% if(offers == '') {%>
                 <div id="status" class="col-sm">
                     <span>DB empty</span>
                 </div>
             <% } else {%>
-                <div class="col-sm">
+                <div class="col-sm-3">
                     <% for(var i=0; i<JSON.stringify(offers[0].titles.length); i++) {%>
                         <div class="titles">
                             <span><%= JSON.stringify(offers[0].titles[i]) %></span>
                         </div>
                     <% } %>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-7">
                     <% for(var i=0; i<JSON.stringify(offers[0].addresses.length); i++) {%>
                         <div class="addresses">
                             <span><%= JSON.stringify(offers[0].addresses[i]) %></span>
@@ -40,12 +94,6 @@
             <% } %>
         </div>
     </div>
-
-    <button id="etl">ETL</button>
-    <button id="extract">Extract</button>
-    <button id="transform">Transform</button>
-    <button id="load">Load</button>
-    <button id="delete">Delete DB</button>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
